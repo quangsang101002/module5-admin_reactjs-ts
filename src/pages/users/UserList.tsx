@@ -14,6 +14,7 @@ import PageNotFound from "../../components/errors/PageNotFound";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaRegCircle } from "react-icons/fa";
 function UserList() {
   const [displayProduct, setDisplayProduct] = useState<User[]>([]);
   const [search, setSeach] = useState<string>("");
@@ -21,12 +22,11 @@ function UserList() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isChange, setIsChange] = useState<boolean>(false);
   const [idUser, setIdUser] = useState<number[]>([]);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchDataProduct();
-  }, []);
+  }, [isChange]);
 
   useEffect(() => {
     fetchDataProduct();
@@ -35,7 +35,6 @@ function UserList() {
   const fetchDataProduct = async () => {
     try {
       const response = await UserApi.SearchUser(search, 7, currentPage);
-      console.log("--->res", response);
 
       if (response) {
         setDisplayProduct(response[0]);
@@ -92,6 +91,7 @@ function UserList() {
       await UserApi.lockUser(id);
 
       notifyLock();
+      setIsChange((prevIsChange) => !prevIsChange);
     } catch (err) {
       alert(err);
     }
@@ -100,6 +100,7 @@ function UserList() {
     try {
       await UserApi.openUser(id);
       notifyOpen();
+      setIsChange((prevIsChange) => !prevIsChange);
     } catch (err) {
       alert(err);
     }
@@ -173,7 +174,16 @@ function UserList() {
                   <td>
                     <input type="checkbox" onChange={() => getId(user.id)} />
                   </td>
-                  <td>{user.username}</td>
+                  <td>
+                    {" "}
+                    <FaRegCircle
+                      style={{
+                        backgroundColor:
+                          user.daysUntilUnlock > 0 ? "red" : "green",
+                      }}
+                    />
+                    {user.username}
+                  </td>
                   <td>{user.email}</td>
 
                   <td>

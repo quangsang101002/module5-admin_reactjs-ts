@@ -36,9 +36,9 @@ const Header: React.FC<HeaderProps> = ({ isHideSidebar, setIsHideSidebar }) => {
     <header className={styles.wrapper}>
       <div className={styles.menu}>
         {isHideSidebar ? (
-          <GrClose onClick={handleHideSide} />
-        ) : (
           <GiHamburgerMenu onClick={handleHideSide} />
+        ) : (
+          <GrClose onClick={handleHideSide} />
         )}
       </div>
 

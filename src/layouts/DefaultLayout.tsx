@@ -7,7 +7,7 @@ import Sidebar from "../components/partials/Sidebars";
 import { useState } from "react";
 
 const DefaultLayout: React.FC = () => {
-  const [isHideSidebar, setIsHideSidebar] = useState(false);
+  const [isHideSidebar, setIsHideSidebar] = useState(true);
   return (
     <div className={clsx(styles.wrapper, "row")}>
       <Header

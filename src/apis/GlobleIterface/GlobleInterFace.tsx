@@ -9,6 +9,7 @@ export interface User {
   created_at: string;
   updated_at: string;
   avatar: File | string;
+  daysUntilUnlock: number;
   profile: {
     gender: number; // or whatever type 'gender' is
     // other profile properties...
