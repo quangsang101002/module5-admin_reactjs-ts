@@ -1,0 +1,28 @@
+.brand {
+  text-align: center;
+
+  & h2 {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+.wrapper {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 0px;
+  h2:first-child {
+    padding-top: 15px;
+  }
+  & h2 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 20px;
+  }
+  & span {
+    display: flex;
+  }
+  & .ps-menu-label {
+    display: flex !important;
+    gap: 20px;
+  }
+}

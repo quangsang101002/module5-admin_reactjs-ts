@@ -1,0 +1,39 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500&family=Arimo:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap");
+
+:root {
+}
+html {
+  font-size: 62.5%;
+
+  //   line-height: 1.2;
+}
+
+body {
+  //   font-family: "Alkatra", cursive;
+  //   font-family: "Arimo", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑,
+    "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC",
+    微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+th,
+td {
+  font-size: 14px;
+}
+option {
+  background-color: aliceblue;
+}
+.search {
+  display: none;
+}
+a {
+  color: #000;
+  text-decoration: none; /* Bỏ gạch chân */
+  font-weight: bold;
+}
