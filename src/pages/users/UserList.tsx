@@ -13,8 +13,8 @@ import PaginationAdmin from "../../components/table/Pagination";
 import PageNotFound from "../../components/errors/PageNotFound";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { FaCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
-import { FaRegCircle } from "react-icons/fa";
 function UserList() {
   const [displayProduct, setDisplayProduct] = useState<User[]>([]);
   const [search, setSeach] = useState<string>("");
@@ -176,10 +176,9 @@ function UserList() {
                   </td>
                   <td>
                     {" "}
-                    <FaRegCircle
+                    <FaCircle
                       style={{
-                        backgroundColor:
-                          user.daysUntilUnlock > 0 ? "red" : "green",
+                        color: user.daysUntilUnlock > 0 ? "red" : "green",
                       }}
                     />
                     {user.username}

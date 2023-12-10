@@ -33,9 +33,6 @@ function Sidebars() {
       setUsername(response.username);
       setUserId(response.id);
     } catch (error) {
-      alert(error);
-      console.log(2, error);
-
       if (error) {
         navigate("/login");
       }

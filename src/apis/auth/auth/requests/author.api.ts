@@ -35,8 +35,6 @@ const getAuth = async () => {
         params: param,
       })
       .then((response) => {
-        console.log("response", response);
-
         return response.data;
       })
       .catch((error) => {
@@ -45,7 +43,7 @@ const getAuth = async () => {
       });
   } else {
     // Xử lý khi accessToken là null
-    return Promise.reject("Access token is null.");
+    return await Promise.reject("Access token is null  1.");
   }
 };
 
@@ -71,7 +69,7 @@ const logout = async () => {
         throw error;
       });
   } else {
-    return Promise.reject("Access token is null.");
+    return Promise.reject("Access token is null  2.");
   }
 };
 const authAPI = {
