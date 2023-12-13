@@ -144,7 +144,7 @@ function UserList() {
         </div>
       </div>
 
-      <table id="customers">
+      <table id="customers" style={{ marginBottom: "30px" }}>
         <thead>
           <tr>
             <th>
@@ -198,7 +198,7 @@ function UserList() {
 
                   <td>{moment(user.created_at).format("YYYY-MM-DD HH:mm")}</td>
                   <td>{moment(user.updated_at).format("YYYY-MM-DD HH:mm")}</td>
-                  {/* <td className="edit-main">
+                  <td className="edit-main">
                     <Link to={`/admin/user_edit/${user.id}`}>
                       {" "}
                       <Button>Sửa </Button>
@@ -211,7 +211,7 @@ function UserList() {
                     >
                       Xóa
                     </Button>
-                  </td> */}
+                  </td>
 
                   <td className="edit-main">
                     {" "}

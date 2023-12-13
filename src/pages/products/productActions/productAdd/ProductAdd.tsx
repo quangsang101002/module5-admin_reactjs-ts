@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import styles from "./ProductAdd.module.scss";
 import clsx from "clsx";
@@ -353,32 +353,55 @@ function ProductAdd(): JSX.Element {
         <div className={clsx(styles.preview_product, "row")}>
           <div className={clsx(styles.content_preview_product_left, "col-6")}>
             <div className={styles.preview}>
-              {base64Image && (
-                <img
-                  src={base64Image}
-                  alt="Uploaded"
-                  style={{ maxWidth: "100%" }}
-                />
-              )}
+              <div className="row">
+                {base64Image ? (
+                  <img
+                    src={base64Image}
+                    alt="Uploaded"
+                    style={{ maxWidth: "100%" }}
+                  />
+                ) : (
+                  <img
+                    src="https://ivcdn.vnecdn.net/giaitri/images/web/2023/08/10/jisoo-blackpink-xuat-hien-sau-khi-cong-khai-nguoi-yeu-1691649923.jpg"
+                    alt="avatar"
+                  />
+                )}
+              </div>
+
               <div
                 className={styles.wrapper_preview_content}
                 style={{ position: "relative" }}
               >
-                {base64Images.slice(0, 6).map((base64Image, index) => (
-                  <div
-                    key={index}
-                    className={clsx(styles.preview_gallery, "col-2")}
-                  >
-                    <img
-                      src={base64Image}
-                      alt="Uploaded"
-                      style={{
-                        opacity: index === 5 ? 0.5 : 1,
-                      }}
-                      className={index === 5 ? styles.hide_img : ""}
-                    />
-                  </div>
-                ))}
+                {base64Images && base64Images.length > 0 ? (
+                  base64Images.slice(0, 6).map((base64Image, index) => (
+                    <div
+                      key={index}
+                      className={clsx(styles.preview_gallery, "col-2")}
+                    >
+                      <img
+                        src={base64Image}
+                        alt="Uploaded"
+                        style={{
+                          opacity: index === 5 ? 0.5 : 1,
+                        }}
+                        className={index === 5 ? styles.hide_img : ""}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <Row xs={1} md={6} className="g-4 mt-3">
+                    {Array.from({ length: 6 }).map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={clsx(styles.preview_gallery, "col-2")}
+                      >
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Kim_Jisoo_on_July_3%2C_2023_07.jpg" />
+                      </div>
+                    ))}
+                  </Row>
+                )}
+
+                {}
 
                 {base64Images.length > 6 ? (
                   <div className={styles.wrapper_quantity}>
@@ -392,13 +415,13 @@ function ProductAdd(): JSX.Element {
             </div>
           </div>
           <div className={clsx(styles.content_preview_product_right, "col-6")}>
-            <div className={clsx(styles.name)}>
-              <h2>{nameProduct}</h2>
+            <div className={clsx(styles.name, "mb-3")}>
+              <h2>{nameProduct ? nameProduct : "Chưa Cập Nhật"}</h2>
             </div>
             <div className={styles.author}>
-              <h2>
+              <h2 className="mb-3">
                 <b>Tác giả: </b>
-                {author}
+                {author ? author : "Chưa Cập Nhật"}
               </h2>
             </div>
             <div className={styles.prices}>

@@ -116,7 +116,7 @@ function ProductList() {
         </div>
       </div>
 
-      <table id="customers">
+      <table id="customers" style={{ marginBottom: "30px" }}>
         <thead>
           <tr>
             <th>
