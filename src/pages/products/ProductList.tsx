@@ -14,19 +14,16 @@ import { useNavigate } from "react-router-dom";
 function ProductList() {
   const [displayProduct, setDisplayProduct] = useState<Product[]>([]);
   const [search, setSearch] = useState<string>("");
-  const [isProduct, setProduct] = useState<boolean>(false);
   const [idCheck, setIdCheck] = useState<number[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalProduct, setTotalProduct] = useState<number>(0);
+  const [isChange, setChange] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     searchProducts();
-  }, [search, currentPage]);
+  }, [search, currentPage, isChange]);
 
-  useEffect(() => {
-    searchProducts();
-  }, [isProduct]);
   const searchProducts = async () => {
     try {
       const response = await productAPI.SearchProduct(search, 7, currentPage);
@@ -46,7 +43,7 @@ function ProductList() {
   const deleteProducts = async (id: number) => {
     try {
       await productAPI.deleteProduct(id);
-      setProduct(!isProduct);
+      await setChange(!isChange);
     } catch (error) {}
   };
   const searchProduct = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +76,7 @@ function ProductList() {
   const handleDelete = async () => {
     try {
       await productAPI.deleteProduct(idCheck);
-      await setProduct(!isProduct);
+      await setChange(true);
     } catch (error) {
       console.log(error);
 
